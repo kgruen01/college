@@ -15,11 +15,43 @@
 # limitations under the License.
 #
 import webapp2
+import jinja2
+import os
+import logging
+import time
+from google.appengine.api import users
+
 
 class MainHandler(webapp2.RequestHandler):
     def get(self):
-        self.response.write('Hello world!')
+        user = users.get_current_user()
+        if user:
+            greeting = ('Welcome, %s! (<a href="%s">sign_out</a>)' %
+                (user.nickname(), users.create_logout_url('/logout')))
+            entry = jinja_environment.get_template("templates/homepage.html")
+            self.response.write(entry.render(self.request.POST))
+        else:
+            greeting = ('<a href="%s">Sign in or register</a>.' %
+                users.create_login_url('/'))
+        self.response.write('<html><body>%s</body></html>' % greeting)
+
+
+
+class LogoutHandler(webapp2.RequestHandler):
+    def get(self):
+        self.response.write('<html><body>Signed Out</body></html>')
+
+
+class LoginHandler(webapp2.RequestHandler):
+    def get(self):
+        template = jinja_environment.get_template("templates/login.html")
+        self.response.write(template.render())
+
+jinja_environment = jinja2.Environment(loader=
+    jinja2.FileSystemLoader(os.path.dirname(__file__)))
 
 app = webapp2.WSGIApplication([
-    ('/', MainHandler)
+    ('/', MainHandler),
+    ('/logout', LogoutHandler),
+    ('/login', LoginHandler)
 ], debug=True)
