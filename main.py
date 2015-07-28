@@ -34,6 +34,9 @@ class MainHandler(webapp2.RequestHandler):
             greeting = ('<a href="%s">Sign in or register</a>.' %
                 users.create_login_url('/'))
         self.response.write('<html><body>%s</body></html>' % greeting)
+        template_vars = {"timeofday": time.asctime()}
+        template = jinja_environment.get_template("templates/homepage.html")
+        self.response.write(template.render(template_vars))
 
 
 
