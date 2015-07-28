@@ -50,11 +50,35 @@ class LoginHandler(webapp2.RequestHandler):
         template = jinja_environment.get_template("templates/login.html")
         self.response.write(template.render())
 
+class EnglishHandler(webapp2.RequestHandler):
+    def get(self):
+        template = jinja_environment.get_template("templates/englishpageoptions.html")
+        self.response.write(template.render())
+
+class MathHandler(webapp2.RequestHandler):
+    def get(self):
+        template = jinja_environment.get_template("templates/mathpageoptions.html")
+        self.response.write(template.render())
+
+class ScienceHandler(webapp2.RequestHandler):
+    def get(self):
+        template = jinja_environment.get_template("templates/sciencepageoptions.html")
+        self.response.write(template.render())
+
+class SocialScienceHandler(webapp2.RequestHandler):
+    def get(self):
+        template = jinja_environment.get_template("templates/socialscienceoptions.html")
+        self.response.write(template.render())
+
 jinja_environment = jinja2.Environment(loader=
     jinja2.FileSystemLoader(os.path.dirname(__file__)))
 
 app = webapp2.WSGIApplication([
     ('/', MainHandler),
     ('/logout', LogoutHandler),
-    ('/login', LoginHandler)
+    ('/login', LoginHandler),
+    ('/english', EnglishHandler),
+    ('/math', MathHandler),
+    ('/science', ScienceHandler),
+    ('/socialscience', SocialScienceHandler)
 ], debug=True)

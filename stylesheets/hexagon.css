@@ -58,3 +58,21 @@
   transform-origin: right top;
   transform: rotate(60deg) translate(110px, 0);
 }
+
+ul {
+  list-style-type: none;
+}
+
+
+body {
+  font-family: 'VT323' ;
+  text-indent: 50px;
+  color: white;
+  background: black;
+  font-size: 30px;
+  div b
+}
+
+h1{
+  font-size: 50px;
+}

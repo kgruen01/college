@@ -1,0 +1,35 @@
+.hexagon{
+  margin-left: 50%;
+  margin-top: 200px;
+}
+
+
+
+.hexagon2{
+  margin-left: 56%;
+}
+
+
+
+.hexagon3{
+  margin-left: 49%;
+}
+
+
+
+.hexagon4{
+  margin-left: 43%;
+}
+
+
+
+.hexagon5{
+  margin-left: 49%;
+}
+
+#websiteheader{
+  text-align: center;
+  width: 100%;
+  background: grey;
+  font-size: 100px;
+}
